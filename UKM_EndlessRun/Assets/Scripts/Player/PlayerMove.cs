@@ -6,11 +6,14 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField, Range(0, 10)] public float moveSpeed = 3;
     [SerializeField, Range(0, 10)] public float leftRightSpeed = 4;
-    static public bool isDead = false;
+    bool isDead = true;
 
     // Update is called once per frame
     void Update()
     {
+        if (!isDead)
+            return;
+
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         // if (isDead == true)
         // {
@@ -26,6 +29,5 @@ public class PlayerMove : MonoBehaviour
         }
 
         // }
-
     }
 }
